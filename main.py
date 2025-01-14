@@ -9,9 +9,10 @@ import os
 from typing import List, Dict
 import asyncio
 from datetime import datetime
-
+from dotenv import load_dotenv
+load_dotenv("var.env")
 # Set OpenAI API key
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = os.getenv('OPENAI_API_KEY')
 
 # Initialize OpenAI LLM
 def init_llm():
