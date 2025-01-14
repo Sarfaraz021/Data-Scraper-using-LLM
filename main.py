@@ -10,9 +10,14 @@ from typing import List, Dict
 import asyncio
 from datetime import datetime
 from dotenv import load_dotenv
+
+# Load environment variables
 load_dotenv("var.env")
-# Set OpenAI API key
-os.environ["OPENAI_API_KEY"] = os.getenv('OPENAI_API_KEY')
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
+# Fix for Windows asyncio compatibility
+if os.name == "nt":
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 # Initialize OpenAI LLM
 def init_llm():
@@ -34,16 +39,16 @@ SCHEMA = {
         "image_url": {"type": "string"}
     },
     "required": [
-        "event_name", 
-        "venue_name", 
-        "venue_address", 
-        "start_date", 
-        "start_time", 
-        "end_date", 
-        "end_time", 
-        "category", 
-        "event_link", 
-        "description", 
+        "event_name",
+        "venue_name",
+        "venue_address",
+        "start_date",
+        "start_time",
+        "end_date",
+        "end_time",
+        "category",
+        "event_link",
+        "description",
         "image_url"
     ]
 }
@@ -51,27 +56,27 @@ SCHEMA = {
 class EventScraper:
     def __init__(self):
         self.llm = init_llm()
-        
+
     async def scrape_url(self, url: str) -> Dict:
         try:
             # Load HTML content
             loader = AsyncChromiumLoader([url])
             docs = await loader.aload()
-            
+
             # Transform with BeautifulSoup
             bs_transformer = BeautifulSoupTransformer()
             docs_transformed = bs_transformer.transform_documents(
-                docs, 
+                docs,
                 tags_to_extract=["div", "span", "a", "p", "h1", "h2", "h3", "img"]
             )
-            
+
             # Split content
             splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
                 chunk_size=2000,
                 chunk_overlap=200
             )
             splits = splitter.split_documents(docs_transformed)
-            
+
             # Extract event data using LLM
             chain = create_extraction_chain(schema=SCHEMA, llm=self.llm)
             results = []
@@ -79,14 +84,14 @@ class EventScraper:
                 extracted = chain.run(split.page_content)
                 if isinstance(extracted, list) and extracted:
                     results.extend(extracted)
-            
+
             # Merge results if multiple chunks contained event data
             if results:
                 final_result = results[0]
                 final_result['event_link'] = url
                 return final_result
             return None
-            
+
         except Exception as e:
             st.error(f"Error scraping {url}: {str(e)}")
             return None
@@ -102,7 +107,7 @@ def main():
 
     # File upload
     uploaded_file = st.file_uploader("Upload URLs file (CSV or TXT)", type=["csv", "txt"])
-    
+
     # Manual URL input
     manual_url = st.text_input("Or enter a single URL:")
 
@@ -110,7 +115,7 @@ def main():
 
     if st.button("Start Scraping"):
         urls = []
-        
+
         if uploaded_file:
             if uploaded_file.type == "text/csv":
                 df = pd.read_csv(uploaded_file)
@@ -118,18 +123,18 @@ def main():
             else:
                 content = uploaded_file.read().decode()
                 urls = [url.strip() for url in content.split('\n') if url.strip()]
-                
+
         if manual_url:
             urls.append(manual_url)
-            
+
         if urls:
             with st.spinner('Scraping events... This may take a while.'):
                 df = asyncio.run(scraper.scrape_urls(urls))
-                
+
                 if not df.empty:
                     st.success(f"Successfully scraped {len(df)} events!")
                     st.dataframe(df)
-                    
+
                     # Download button
                     csv = df.to_csv(index=False)
                     st.download_button(
