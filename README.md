@@ -45,6 +45,6 @@ streamlit run app.py
 ```
 
 ## Environment setup details
-- Ensure you have Python 3.8 or higher installed.
+- Ensure you have Python 3.11 or higher installed.
 - Install the required packages as mentioned in the installation steps.
 - Set up the environment variables as mentioned in the "How to run the project" section.
