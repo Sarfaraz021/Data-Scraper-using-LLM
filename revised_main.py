@@ -203,7 +203,7 @@ class EventScraper:
         
         for split in splits:
             try:
-                extracted = chain.run(split)
+                extracted = chain.invoke(split)
                 if isinstance(extracted, list) and extracted:
                     for item in extracted:
                         item["event_link"] = url

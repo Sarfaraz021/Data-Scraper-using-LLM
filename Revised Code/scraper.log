@@ -1,0 +1,39 @@
+2025-01-20 23:55:31,252 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-226' coro=<Connection.run() done, defined at d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_connection.py:272> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 279, in run
+    await self._transport.connect()
+  File "d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\asyncio\subprocess.py", line 221, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1694, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 502, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2025-01-20 23:55:31,285 - ERROR - Scraping error: 
+2025-01-22 01:47:56,628 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-30' coro=<Connection.run() done, defined at d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_connection.py:272> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 279, in run
+    await self._transport.connect()
+  File "d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "d:\Data-Scraper-using-LLM\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\asyncio\subprocess.py", line 221, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1694, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 502, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
