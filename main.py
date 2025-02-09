@@ -15,6 +15,9 @@ from urllib.parse import urljoin, urlparse
 import logging
 import time
 from concurrent.futures import ThreadPoolExecutor
+from langchain_anthropic import ChatAnthropic
+
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -22,10 +25,11 @@ logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv("var.env")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+# os.environ["ANTHROPIC_API_KEY"] = os.getenv("ANTHROPIC_API_KEY")
 
 def init_llm():
-    return ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k")
+    # return ChatOpenAI(temperature=0, model="gpt-4-turbo")
+    return ChatAnthropic(model='claude-3-5-sonnet-20241022')
 
 SCHEMA = {
     "properties": {
