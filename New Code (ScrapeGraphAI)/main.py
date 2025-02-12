@@ -8,8 +8,8 @@ from datetime import datetime
 import os
 
 # Set your API keys
-os.environ["SGAI_API_KEY"] = "sgai-7aa3472c-873b-44e8-8d72-4dc6ba5d2e79"
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ["SGAI_API_KEY"] = "PASTE YOUR HERE Search Grpah API Key"
+os.environ['OPENAI_API_KEY'] = "Paste here your OPENAI APIKEY"
 
 def init_scraper():
     tools = [SmartScraperTool()]
