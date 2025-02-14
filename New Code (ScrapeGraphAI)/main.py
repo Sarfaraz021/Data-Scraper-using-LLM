@@ -16,8 +16,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Set API keys
-os.environ["SGAI_API_KEY"] = "sgai-27748dbd-e935-462d-bf52-c12711f545c5"
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ["SGAI_API_KEY"] = "PASTE YOUR SCRAPE GRAPH API KEY HERE"
+os.environ['OPENAI_API_KEY'] = "PASTE OPENAI KEY HERE"
 
 def init_scraper():
     tools = [SmartScraperTool()]
