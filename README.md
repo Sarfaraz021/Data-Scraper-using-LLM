@@ -16,7 +16,7 @@ This project combines the power of LLMs with web scraping capabilities to intell
 
 1. Clone the repository:
 ```
-git clone https://github.com/yourusername/Data-Scraper-using-LLM.git
+git clone https://github.com/Sarfaraz021/Data-Scraper-using-LLM.git
 ```
 
 2. Navigate to the project directory:
@@ -30,6 +30,7 @@ pip install streamlit langchain-openai langchain playwright beautifulsoup4 panda
 playwright install
 pip install python-dotenv
 pip install selenium webdriver-manager
+pip install --quiet -U langchain-scrapegraph
 ```
 
 ## How to run the project
@@ -38,6 +39,7 @@ pip install selenium webdriver-manager
 Create a `.env` file in the project directory and add your OpenAI API key:
 ```
 OPENAI_API_KEY=your_openai_api_key
+SGAI_API_KEY = PASTE YOUR SCRAPE GRAPH API KEY HERE
 ```
 
 2. Run the Streamlit application:
