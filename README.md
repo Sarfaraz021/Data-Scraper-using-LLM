@@ -6,7 +6,7 @@ A web scraping application that uses Language Learning Models (LLM) to extract a
 This project combines the power of LLMs with web scraping capabilities to intelligently extract and analyze web content using Streamlit, LangChain, and Playwright.
 
 ## Methodology
-![Web Scraping Methodology](web%20scrapping%20methodology%20digram.png)
+![sgai-hero](https://github.com/user-attachments/assets/e1ba26d5-1f37-41fc-a52d-1a4d3e8deae8)
 
 ## Prerequisites
 - Python 3.11 or higher
